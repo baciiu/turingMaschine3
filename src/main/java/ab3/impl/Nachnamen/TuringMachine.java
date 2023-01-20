@@ -5,13 +5,16 @@ import java.util.Set;
 
 public class TuringMachine implements ab3.TuringMachine {
 
-    private int getCurrentState;
     private Set<Character> alphabet;
     private int numberOfStates;
     private int numberOfTapes;
     private boolean isHalt = false;
     private boolean isError = false;
     private List<TapeContent> tapeContents;
+    private int currentState;
+    private int initialState;
+    private int haltingState;
+    private String content;
 
 
     public TuringMachine(){
@@ -20,22 +23,24 @@ public class TuringMachine implements ab3.TuringMachine {
 
     @Override
     public void reset() {
-
+        setNumberOfTapes(numberOfTapes);
+        currentState = initialState;
     }
 
     @Override
     public int getCurrentState() throws IllegalStateException {
-        return 0;
+        return currentState;
     }
 
     @Override
     public void setAlphabet(Set<Character> alphabet) throws IllegalArgumentException {
+        this.alphabet = alphabet;
 
     }
 
     @Override
     public Set<Character> getAlphabet() {
-        return null;
+        return alphabet;
     }
 
     @Override
@@ -50,36 +55,49 @@ public class TuringMachine implements ab3.TuringMachine {
 
     @Override
     public int getNumberOfStates() {
-        return 0;
+        return numberOfStates;
     }
 
     @Override
     public int getNumberOfTapes() {
-        return 0;
+        return numberOfTapes;
     }
 
     @Override
     public void setNumberOfStates(int numStates) throws IllegalArgumentException {
 
+        if (numStates < 0){
+            throw new IllegalArgumentException();
+        }
+        numberOfStates = numStates;
     }
 
     @Override
     public void setNumberOfTapes(int numTapes) throws IllegalArgumentException {
 
+        if (numTapes < 0){
+            throw new IllegalArgumentException();
+        }
+        numberOfTapes = numTapes;
     }
 
     @Override
     public void setHaltingState(int haltingState) throws IllegalArgumentException {
+        this.haltingState = haltingState;
 
     }
 
     @Override
     public void setInitialState(int initialState) throws IllegalArgumentException {
-
+        if (initialState < 0){
+            throw new IllegalArgumentException();
+        }
+        this.initialState = initialState;
     }
 
     @Override
     public void setInput(String content) {
+        this.content = content;
 
     }
 
@@ -100,11 +118,11 @@ public class TuringMachine implements ab3.TuringMachine {
 
     @Override
     public List<TapeContent> getTapeContents() {
-        return null;
+        return tapeContents;
     }
 
     @Override
     public TapeContent getTapeContent(int tape) {
-        return null;
+        return tapeContents.get(tape);
     }
 }
