@@ -10,6 +10,6 @@ public class Ab3Impl implements Ab3 {
     @Override
     public TuringMachine getEmptyTM() {
 	//TODO: Your implementation goes here!
-	return null;
+	return new ab3.impl.Nachnamen.TuringMachine();
     }
 }
