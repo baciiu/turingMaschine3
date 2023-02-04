@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.115s</div>
+<div class="counter">0.082s</div>
 <p>duration</p>
 </div>
 </td>
@@ -73,11 +73,11 @@
 <div id="tab0" class="tab">
 <h2>Failed tests</h2>
 <div class="test">
-<a name="testMachineTwoTapesA()"></a>
-<h3 class="failures">testMachineTwoTapesA()</h3>
+<a name="testMachineOneTapeA()"></a>
+<h3 class="failures">testMachineOneTapeA()</h3>
 <span class="code">
 <pre>java.lang.NullPointerException: Cannot invoke &quot;ab3.TuringMachine$TapeContent.getLeftOfHead()&quot; because &quot;tape&quot; is null
-	at ab3.Ab3Tests.testMachineTwoTapesA(Ab3Tests.java:377)
+	at ab3.Ab3Tests.testMachineOneTapeA(Ab3Tests.java:305)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -167,11 +167,11 @@
 </span>
 </div>
 <div class="test">
-<a name="testMachineTwoTapesB()"></a>
-<h3 class="failures">testMachineTwoTapesB()</h3>
+<a name="testMachineOneTapeB()"></a>
+<h3 class="failures">testMachineOneTapeB()</h3>
 <span class="code">
 <pre>java.lang.NullPointerException: Cannot invoke &quot;ab3.TuringMachine$TapeContent.getLeftOfHead()&quot; because &quot;tape&quot; is null
-	at ab3.Ab3Tests.testMachineTwoTapesB(Ab3Tests.java:407)
+	at ab3.Ab3Tests.testMachineOneTapeB(Ab3Tests.java:329)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -261,11 +261,11 @@
 </span>
 </div>
 <div class="test">
-<a name="testMachineTwoTapesC()"></a>
-<h3 class="failures">testMachineTwoTapesC()</h3>
+<a name="testMachineOneTapeC()"></a>
+<h3 class="failures">testMachineOneTapeC()</h3>
 <span class="code">
 <pre>java.lang.NullPointerException: Cannot invoke &quot;ab3.TuringMachine$TapeContent.getLeftOfHead()&quot; because &quot;tape&quot; is null
-	at ab3.Ab3Tests.testMachineTwoTapesC(Ab3Tests.java:437)
+	at ab3.Ab3Tests.testMachineOneTapeC(Ab3Tests.java:353)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -382,57 +382,57 @@
 </tr>
 <tr>
 <td class="success">testBasicOneStep()</td>
-<td class="success">0.002s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testBasicTwoStep()</td>
-<td class="success">0.074s</td>
+<td class="success">0.037s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testMachineOneTapeA()</td>
-<td class="success">0.001s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testMachineOneTapeB()</td>
-<td class="success">0.003s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testMachineOneTapeC()</td>
-<td class="success">0.001s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="failures">testMachineTwoTapesA()</td>
-<td class="failures">0.016s</td>
+<td class="failures">testMachineOneTapeA()</td>
+<td class="failures">0.009s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
-<td class="failures">testMachineTwoTapesB()</td>
-<td class="failures">0.002s</td>
-<td class="failures">failed</td>
-</tr>
-<tr>
-<td class="failures">testMachineTwoTapesC()</td>
+<td class="failures">testMachineOneTapeB()</td>
 <td class="failures">0.003s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
-<td class="success">testStateErrors()</td>
+<td class="failures">testMachineOneTapeC()</td>
+<td class="failures">0.002s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="success">testMachineTwoTapesA()</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testMachineTwoTapesB()</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testMachineTwoTapesC()</td>
 <td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testStateErrors()</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testTapeErrors()</td>
-<td class="success">0.002s</td>
+<td class="success">0.006s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testTransitionErrors()</td>
-<td class="success">0.002s</td>
+<td class="success">0.004s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -452,7 +452,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.6</a> at 4 Feb 2023, 18:35:07</p>
+<a href="http://www.gradle.org">Gradle 7.6</a> at 4 Feb 2023, 19:34:01</p>
 </div>
 </div>
 </body>

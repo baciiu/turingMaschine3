@@ -201,6 +201,7 @@ public class TuringMachine implements ab3.TuringMachine {
 
             if (t.getFromState() == getCurrentState() ) {
                 transitionMap.put(t.getRead()[0], t);
+                break;
 
             }
         }
@@ -234,7 +235,7 @@ public class TuringMachine implements ab3.TuringMachine {
 
             Map<Character[], Transition> transitionMap = new HashMap<>();
 
-            Character[] read = new Character[]{};
+            Character[] read;
 
             for (Transition t : transitions ) {
 
@@ -249,20 +250,20 @@ public class TuringMachine implements ab3.TuringMachine {
 
                 if (t.getFromState() == getCurrentState() && Arrays.equals(t.getRead(),read)) {
                     transitionMap.put(t.getRead(), t);
+                    break;
                 }
             }
+
             if (transitionMap.size() != 0 ) {
 
-                transition = transitionMap.get(read); // select transition
+                transition = transitionMap.entrySet().iterator().next().getValue();
 
                 if (transition != null) {
+                        tapeContents.set(0, new TapeContent(tapeContents.get(0).getLeftOfHead(), transition.getWrite()[0], tapeContents.get(0).getRightOfHead()));
+                        move(transition,0);
 
-                    for (int i = 0; i < numberOfTapes; i++) {
-                        tapeContents.set(i, new TapeContent(tapeContents.get(i).getLeftOfHead(), transition.getWrite()[i], tapeContents.get(i).getRightOfHead()));
-                    }
-                    for (int i = 0; i < numberOfTapes; i++) {
-                        move(transition,i);
-                    }
+                        tapeContents.set(1, new TapeContent(tapeContents.get(1).getLeftOfHead(), transition.getWrite()[1], tapeContents.get(1).getRightOfHead()));
+                        move(transition,1);
 
                     setCurrentState(transition.getToState());
 
@@ -280,7 +281,7 @@ public class TuringMachine implements ab3.TuringMachine {
                 }
             }else{ // no transitions
                 isHalt = true;
-                //throw new IllegalStateException();
+                throw new IllegalStateException();
             }
 
         }
@@ -303,10 +304,13 @@ public class TuringMachine implements ab3.TuringMachine {
 
                     if (isEmpty(tapeContents.get(tape).getLeftOfHead())){
                         newBelowHead = null;
+                        newLeftOfHead = new Character[0];
                     }else{
                         newBelowHead = tapeContents.get(tape).getLeftOfHead()[tapeContents.get(tape).getLeftOfHead().length - 1];
+                        newLeftOfHead = Arrays.copyOf( tapeContents.get(tape).getLeftOfHead(),  tapeContents.get(tape).getLeftOfHead().length-1);
+
                     }
-                    newLeftOfHead = Arrays.copyOf( tapeContents.get(tape).getLeftOfHead(),  tapeContents.get(tape).getLeftOfHead().length);
+
 
                     if (tapeContents.get(tape).getBelowHead() != null || tapeContents.get(tape).getRightOfHead().length != 0) {
                         newRightOfHead = new Character[tapeContents.get(tape).getRightOfHead().length + 1];
