@@ -183,8 +183,8 @@ public class TuringMachine implements ab3.TuringMachine {
     @Override
     public void doNextStep() throws IllegalStateException {
 
-        if ( isInErrorState() ) {
-            throw new IllegalStateException();
+        if ( isInErrorState()) {
+           throw new IllegalStateException();
         }
 
         Transition transition;
@@ -201,33 +201,29 @@ public class TuringMachine implements ab3.TuringMachine {
 
             if (t.getFromState() == getCurrentState() ) {
                 transitionMap.put(t.getRead()[0], t);
-                break;
-
             }
         }
         if (transitionMap.size() != 0 ) {
+
 
             transition = transitionMap.get(tapeContents.get(0).getBelowHead()); // select transition
 
                 if (transition != null) {
 
-                        tapeContents.set(0, new TapeContent(tapeContents.get(0).getLeftOfHead(), transition.getWrite()[0], tapeContents.get(0).getRightOfHead()));
-                        move(transition,0);
-                    setCurrentState(transition.getToState());
-
                     if ( transition.getToState() == haltingState){
                         isHalt = true;
                     }
+                        tapeContents.set(0, new TapeContent(tapeContents.get(0).getLeftOfHead(), transition.getWrite()[0], tapeContents.get(0).getRightOfHead()));
+                        move(transition,0);
+                        setCurrentState(transition.getToState());
 
+                }else {
+                    isHalt = true;
+                    isError = true;
                 }
 
-            if (transition == null){
-                isHalt = true;
-                isError = true;
-            }
         }else{ // no transitions
             isHalt = true;
-            //throw new IllegalStateException();
         }
         }else{
 
@@ -273,12 +269,9 @@ public class TuringMachine implements ab3.TuringMachine {
                     isError = true;
                 }
 
-                if (transition == null){
-                    isHalt = true;
-                    isError = true;
-                }
             }else{ // no transitions
                 isHalt = true;
+                isError = true;
                 throw new IllegalStateException();
             }
 
@@ -302,13 +295,12 @@ public class TuringMachine implements ab3.TuringMachine {
 
                     if (isEmpty(tapeContents.get(tape).getLeftOfHead())){
                         newBelowHead = null;
-                        newLeftOfHead = new Character[0];
+                        newLeftOfHead = Arrays.copyOf( tapeContents.get(tape).getLeftOfHead(),  tapeContents.get(tape).getLeftOfHead().length);
                     }else{
                         newBelowHead = tapeContents.get(tape).getLeftOfHead()[tapeContents.get(tape).getLeftOfHead().length - 1];
                         newLeftOfHead = Arrays.copyOf( tapeContents.get(tape).getLeftOfHead(),  tapeContents.get(tape).getLeftOfHead().length-1);
 
                     }
-
 
                     if (tapeContents.get(tape).getBelowHead() != null || tapeContents.get(tape).getRightOfHead().length != 0) {
                         newRightOfHead = new Character[tapeContents.get(tape).getRightOfHead().length + 1];
@@ -357,12 +349,17 @@ public class TuringMachine implements ab3.TuringMachine {
 
     @Override
     public List<TapeContent> getTapeContents() {
-
+        if ( isInErrorState()) {
+            return null;
+        }
         return tapeContents;
     }
 
     @Override
     public TapeContent getTapeContent(int tape) {
+        if (isInErrorState()){
+            return null;
+        }
         return tapeContents.get(tape);
     }
     private boolean isValid( Character[] array){
