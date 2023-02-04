@@ -12,10 +12,7 @@ public class TuringMachine implements ab3.TuringMachine {
     private List<TapeContent> tapeContents = new ArrayList<>();
     private List<Transition> transitions = new ArrayList<>();
     private int currentState;
-    private int initialState;
     private int haltingState;
-    private String content;
-
 
     @Override
     public void reset() {
@@ -147,10 +144,6 @@ public class TuringMachine implements ab3.TuringMachine {
 
     @Override
     public void setInitialState(int initialState) throws IllegalArgumentException {
-       /* if (initialState < 0){
-            throw new IllegalArgumentException();
-        }
-        this.initialState = initialState;*/
 
         if ( ( getNumberOfStates() < initialState ) || initialState < 0 ){
             throw new IllegalArgumentException();
@@ -161,7 +154,6 @@ public class TuringMachine implements ab3.TuringMachine {
 
     @Override
     public void setInput(String content) {
-        //this.content = content;
         Character[] left = new Character[0];
         Character[] right = new Character[0];
         Character below = null;
@@ -195,7 +187,10 @@ public class TuringMachine implements ab3.TuringMachine {
             throw new IllegalStateException();
         }
 
-        Transition transition = null;
+        Transition transition;
+
+        if ( numberOfTapes == 1){
+
         Map<Character, Transition> transitionMap = new HashMap<>();
 
         for (Transition t : transitions ) {
@@ -204,36 +199,90 @@ public class TuringMachine implements ab3.TuringMachine {
                 throw new IllegalStateException();
             }
 
-            if (t.getFromState() == getCurrentState()) {
+            if (t.getFromState() == getCurrentState() ) {
                 transitionMap.put(t.getRead()[0], t);
+
             }
         }
         if (transitionMap.size() != 0 ) {
 
-            for (int i = 0; i < numberOfTapes ; i++) {
+            transition = transitionMap.get(tapeContents.get(0).getBelowHead()); // select transition
 
-                transition = transitionMap.get(tapeContents.get(i).getBelowHead());
                 if (transition != null) {
-                    tapeContents.set(i, new TapeContent(tapeContents.get(i).getLeftOfHead(), transition.getWrite()[i], tapeContents.get(i).getRightOfHead()));
-                    move(transition,i);
+
+                        tapeContents.set(0, new TapeContent(tapeContents.get(0).getLeftOfHead(), transition.getWrite()[0], tapeContents.get(0).getRightOfHead()));
+                        move(transition,0);
                     setCurrentState(transition.getToState());
+
                     if ( transition.getToState() == haltingState){
                         isHalt = true;
                     }
 
-
-                }else{
-                    isHalt = true;
+                }else{ // no next transition found
                     isError = true;
                 }
-            }
+
             if (transition == null){
                 isHalt = true;
                 isError = true;
             }
-        }else{
+        }else{ // no transitions
             isHalt = true;
-            throw new IllegalStateException();
+            //throw new IllegalStateException();
+        }
+        }else{
+
+            Map<Character[], Transition> transitionMap = new HashMap<>();
+
+            Character[] read = new Character[]{};
+
+            for (Transition t : transitions ) {
+
+                if (t.getFromState() == haltingState){
+                    throw new IllegalStateException();
+                }
+                read = new Character[numberOfTapes];
+
+                for (int i = 0; i < read.length ; i++) {
+                    read[i] = tapeContents.get(i).getBelowHead();
+                }
+
+                if (t.getFromState() == getCurrentState() && Arrays.equals(t.getRead(),read)) {
+                    transitionMap.put(t.getRead(), t);
+                }
+            }
+            if (transitionMap.size() != 0 ) {
+
+                transition = transitionMap.get(read); // select transition
+
+                if (transition != null) {
+
+                    for (int i = 0; i < numberOfTapes; i++) {
+                        tapeContents.set(i, new TapeContent(tapeContents.get(i).getLeftOfHead(), transition.getWrite()[i], tapeContents.get(i).getRightOfHead()));
+                    }
+                    for (int i = 0; i < numberOfTapes; i++) {
+                        move(transition,i);
+                    }
+
+                    setCurrentState(transition.getToState());
+
+                    if ( transition.getToState() == haltingState){
+                        isHalt = true;
+                    }
+
+                }else{ // no next transition found
+                    isError = true;
+                }
+
+                if (transition == null){
+                    isHalt = true;
+                    isError = true;
+                }
+            }else{ // no transitions
+                isHalt = true;
+                //throw new IllegalStateException();
+            }
+
         }
 
     }
@@ -243,10 +292,10 @@ public class TuringMachine implements ab3.TuringMachine {
     }
 
     private void move( Transition transition,int tape){
-        Character[] newRightOfHead = tapeContents.get(0).getRightOfHead();
+        Character[] newRightOfHead = tapeContents.get(tape).getRightOfHead();
         Character newBelowHead ;
-        Character[] newLeftOfHead = tapeContents.get(0).getLeftOfHead();;
-        Movement movement = transition.getMove()[0];
+        Character[] newLeftOfHead = tapeContents.get(tape).getLeftOfHead();;
+        Movement movement = transition.getMove()[tape];
 
         switch (movement) {
             case Left -> {
