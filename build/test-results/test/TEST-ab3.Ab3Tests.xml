@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ab3.Ab3Tests" tests="14" skipped="0" failures="2" errors="0" timestamp="2023-02-04T15:09:50" hostname="Bacius-MacBook-Air.local" time="0.118">
+<testsuite name="ab3.Ab3Tests" tests="14" skipped="0" failures="2" errors="0" timestamp="2023-02-04T15:36:38" hostname="Bacius-MacBook-Air.local" time="0.197">
   <properties/>
-  <testcase name="testBasicTwoStep()" classname="ab3.Ab3Tests" time="0.04"/>
-  <testcase name="testTapeErrors()" classname="ab3.Ab3Tests" time="0.007"/>
-  <testcase name="testAlphabet()" classname="ab3.Ab3Tests" time="0.002"/>
-  <testcase name="testBasicInitialState()" classname="ab3.Ab3Tests" time="0.003"/>
+  <testcase name="testBasicTwoStep()" classname="ab3.Ab3Tests" time="0.057"/>
+  <testcase name="testTapeErrors()" classname="ab3.Ab3Tests" time="0.009"/>
+  <testcase name="testAlphabet()" classname="ab3.Ab3Tests" time="0.001"/>
+  <testcase name="testBasicInitialState()" classname="ab3.Ab3Tests" time="0.004"/>
   <testcase name="testStateErrors()" classname="ab3.Ab3Tests" time="0.003"/>
-  <testcase name="testMachineTwoTapesA()" classname="ab3.Ab3Tests" time="0.01">
-    <failure message="java.lang.IllegalStateException" type="java.lang.IllegalStateException">java.lang.IllegalStateException
-	at ab3.impl.Nachnamen.TuringMachine.doNextStep(TuringMachine.java:195)
-	at ab3.Ab3Tests.testMachineTwoTapesA(Ab3Tests.java:372)
+  <testcase name="testMachineTwoTapesA()" classname="ab3.Ab3Tests" time="0.012">
+    <failure message="java.lang.NullPointerException: Cannot invoke &quot;ab3.TuringMachine$TapeContent.getLeftOfHead()&quot; because &quot;tape&quot; is null" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot invoke &quot;ab3.TuringMachine$TapeContent.getLeftOfHead()&quot; because &quot;tape&quot; is null
+	at ab3.Ab3Tests.testMachineTwoTapesA(Ab3Tests.java:377)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -97,10 +96,9 @@
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
 </failure>
   </testcase>
-  <testcase name="testMachineTwoTapesB()" classname="ab3.Ab3Tests" time="0.003">
-    <failure message="java.lang.IllegalStateException" type="java.lang.IllegalStateException">java.lang.IllegalStateException
-	at ab3.impl.Nachnamen.TuringMachine.doNextStep(TuringMachine.java:195)
-	at ab3.Ab3Tests.testMachineTwoTapesB(Ab3Tests.java:402)
+  <testcase name="testMachineTwoTapesB()" classname="ab3.Ab3Tests" time="0.036">
+    <failure message="java.lang.NullPointerException: Cannot invoke &quot;ab3.TuringMachine$TapeContent.getLeftOfHead()&quot; because &quot;tape&quot; is null" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot invoke &quot;ab3.TuringMachine$TapeContent.getLeftOfHead()&quot; because &quot;tape&quot; is null
+	at ab3.Ab3Tests.testMachineTwoTapesB(Ab3Tests.java:407)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -190,11 +188,11 @@
   </testcase>
   <testcase name="testMachineTwoTapesC()" classname="ab3.Ab3Tests" time="0.001"/>
   <testcase name="testMachineOneTapeA()" classname="ab3.Ab3Tests" time="0.002"/>
-  <testcase name="testMachineOneTapeB()" classname="ab3.Ab3Tests" time="0.001"/>
-  <testcase name="testMachineOneTapeC()" classname="ab3.Ab3Tests" time="0.001"/>
-  <testcase name="testTransitionErrors()" classname="ab3.Ab3Tests" time="0.005"/>
-  <testcase name="testBasicOneStep()" classname="ab3.Ab3Tests" time="0.005"/>
-  <testcase name="testBasicFailure()" classname="ab3.Ab3Tests" time="0.003"/>
+  <testcase name="testMachineOneTapeB()" classname="ab3.Ab3Tests" time="0.002"/>
+  <testcase name="testMachineOneTapeC()" classname="ab3.Ab3Tests" time="0.015"/>
+  <testcase name="testTransitionErrors()" classname="ab3.Ab3Tests" time="0.003"/>
+  <testcase name="testBasicOneStep()" classname="ab3.Ab3Tests" time="0.001"/>
+  <testcase name="testBasicFailure()" classname="ab3.Ab3Tests" time="0.005"/>
   <system-out><![CDATA[Gesamtpunkte: 9
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
