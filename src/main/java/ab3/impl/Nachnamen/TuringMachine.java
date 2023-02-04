@@ -1,5 +1,6 @@
 package ab3.impl.Nachnamen;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -10,7 +11,8 @@ public class TuringMachine implements ab3.TuringMachine {
     private int numberOfTapes;
     private boolean isHalt = false;
     private boolean isError = false;
-    private List<TapeContent> tapeContents;
+    private List<TapeContent> tapeContents = new ArrayList<>();
+    private List<Transition> transitions = new ArrayList<>();
     private int currentState;
     private int initialState;
     private int haltingState;
@@ -46,11 +48,32 @@ public class TuringMachine implements ab3.TuringMachine {
     @Override
     public void addTransition(int fromState, Character read, int toState, Character write, Movement move) throws IllegalArgumentException {
 
+        checkTransitionArguments(fromState, toState, alphabet.contains(read), alphabet.contains(write));
+
+        transitions.add(new Transition(fromState,new Character[]{read},toState,new Character[]{write},new Movement[]{move}));
     }
 
     @Override
     public void addTransition(int fromState, Character[] read, int toState, Character[] write, Movement[] move) throws IllegalArgumentException {
 
+
+        checkTransitionArguments(fromState, toState, alphabet.contains(read), alphabet.contains(write));
+
+        transitions.add(new Transition(fromState,read,toState,write,move));
+
+
+    }
+
+    private void checkTransitionArguments(int fromState, int toState, boolean contains, boolean contains2) {
+        if (toState == haltingState){
+            throw new IllegalArgumentException();
+        }
+        if (!contains || !contains2){
+            throw new IllegalArgumentException();
+        }
+        if (fromState < 0 || toState > getNumberOfStates()) {
+            throw new IllegalArgumentException();
+        }
     }
 
     @Override
@@ -83,6 +106,11 @@ public class TuringMachine implements ab3.TuringMachine {
 
     @Override
     public void setHaltingState(int haltingState) throws IllegalArgumentException {
+
+        if (haltingState < 0 || haltingState > getNumberOfStates() ){
+            throw new IllegalArgumentException();
+        }
+
         this.haltingState = haltingState;
 
     }
