@@ -219,8 +219,6 @@ public class TuringMachine implements ab3.TuringMachine {
                         isHalt = true;
                     }
 
-                }else{ // no next transition found
-                    isError = true;
                 }
 
             if (transition == null){
@@ -359,17 +357,12 @@ public class TuringMachine implements ab3.TuringMachine {
 
     @Override
     public List<TapeContent> getTapeContents() {
-        if ( isInErrorState()) {
-            return null;
-        }
+
         return tapeContents;
     }
 
     @Override
     public TapeContent getTapeContent(int tape) {
-        if (isInErrorState()){
-            return null;
-        }
         return tapeContents.get(tape);
     }
     private boolean isValid( Character[] array){
