@@ -457,7 +457,7 @@ public class Ab3Tests {
     public static void printPoints() {
 
 	if(basicTestsOK) punkte += 1;
-	else punkte /= 2;
+		else punkte /= 2;
 
 	System.out.println("Gesamtpunkte: " + punkte);
     }

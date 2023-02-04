@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ab3.Ab3Tests" tests="14" skipped="0" failures="0" errors="0" timestamp="2023-02-04T19:57:19" hostname="Bacius-MacBook-Air.local" time="0.154">
+<testsuite name="ab3.Ab3Tests" tests="14" skipped="0" failures="0" errors="0" timestamp="2023-02-04T20:12:43" hostname="Bacius-MacBook-Air.local" time="0.127">
   <properties/>
-  <testcase name="testBasicTwoStep()" classname="ab3.Ab3Tests" time="0.079"/>
-  <testcase name="testTapeErrors()" classname="ab3.Ab3Tests" time="0.004"/>
-  <testcase name="testAlphabet()" classname="ab3.Ab3Tests" time="0.001"/>
-  <testcase name="testBasicInitialState()" classname="ab3.Ab3Tests" time="0.002"/>
-  <testcase name="testStateErrors()" classname="ab3.Ab3Tests" time="0.004"/>
-  <testcase name="testMachineTwoTapesA()" classname="ab3.Ab3Tests" time="0.004"/>
-  <testcase name="testMachineTwoTapesB()" classname="ab3.Ab3Tests" time="0.005"/>
-  <testcase name="testMachineTwoTapesC()" classname="ab3.Ab3Tests" time="0.002"/>
-  <testcase name="testMachineOneTapeA()" classname="ab3.Ab3Tests" time="0.002"/>
-  <testcase name="testMachineOneTapeB()" classname="ab3.Ab3Tests" time="0.004"/>
-  <testcase name="testMachineOneTapeC()" classname="ab3.Ab3Tests" time="0.002"/>
+  <testcase name="testBasicTwoStep()" classname="ab3.Ab3Tests" time="0.055"/>
+  <testcase name="testTapeErrors()" classname="ab3.Ab3Tests" time="0.006"/>
+  <testcase name="testAlphabet()" classname="ab3.Ab3Tests" time="0.002"/>
+  <testcase name="testBasicInitialState()" classname="ab3.Ab3Tests" time="0.001"/>
+  <testcase name="testStateErrors()" classname="ab3.Ab3Tests" time="0.002"/>
+  <testcase name="testMachineTwoTapesA()" classname="ab3.Ab3Tests" time="0.005"/>
+  <testcase name="testMachineTwoTapesB()" classname="ab3.Ab3Tests" time="0.003"/>
+  <testcase name="testMachineTwoTapesC()" classname="ab3.Ab3Tests" time="0.003"/>
+  <testcase name="testMachineOneTapeA()" classname="ab3.Ab3Tests" time="0.007"/>
+  <testcase name="testMachineOneTapeB()" classname="ab3.Ab3Tests" time="0.002"/>
+  <testcase name="testMachineOneTapeC()" classname="ab3.Ab3Tests" time="0.003"/>
   <testcase name="testTransitionErrors()" classname="ab3.Ab3Tests" time="0.003"/>
-  <testcase name="testBasicOneStep()" classname="ab3.Ab3Tests" time="0.001"/>
-  <testcase name="testBasicFailure()" classname="ab3.Ab3Tests" time="0.004"/>
+  <testcase name="testBasicOneStep()" classname="ab3.Ab3Tests" time="0.002"/>
+  <testcase name="testBasicFailure()" classname="ab3.Ab3Tests" time="0.003"/>
   <system-out><![CDATA[Gesamtpunkte: 13
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
